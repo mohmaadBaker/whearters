@@ -1,20 +1,30 @@
-
+import { useState } from 'react';
 import './App.scss'
+import { GlobalContext } from './Comp/context'
 import Search from './Search';
-// import storm from '../public/img/weather-icons/';
+import "bootstrap";
+import "bootstrap/scss/bootstrap.scss";
+
 function App() {
-
+  const [getData, setGetData] = useState(1);
+  function update() {
+    setGetData(0);
+  }
   return (
-    <div className="app">
-      {/* <img src={storm} alt="storm icon" /> */}
-      <header className="app__header">
-      </header>
-      <Search />
-      <main className="app__main">
+    <GlobalContext.Provider
+      value={{ update }}
+    >
 
-      </main>
+      <div className="app min-hv-100">
+        {/* <img src={storm} alt="storm icon" /> */}
+        <Search />
 
-    </div>
+        <main className="app__main">
+
+        </main>
+
+      </div>
+    </GlobalContext.Provider>
   );
 }
 export default App;
